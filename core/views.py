@@ -4,9 +4,11 @@ from core.models import *
 def HomeView(request):
     items = Items.objects.all()
     list = ItemList.objects.all()
+    review = Feedback.objects.all()
     return render(request, 'home.html', {
         'items':items,
         'list': list,
+        'review': review,
     })
 
 def AboutView(request):

@@ -247,30 +247,31 @@
 
     <ul class="filters_menu">
       <li class="active" data-filter="*">All</li>
-      <li data-filter=".burger">Burger</li>
-      <li data-filter=".pizza">Pizza</li>
-      <li data-filter=".pasta">Pasta</li>
-      <li data-filter=".fries">Fries</li>
+      {% for l in list %}
+      <li data-filter="*">{{l.Category_name}}</li>
+      {% endfor %}
     </ul>
 
     <div class="filters-content">
       <div class="row grid">
-        <div class="col-sm-6 col-lg-4 all pizza">
+        {% for i in items %}
+        
+        <div class="col-sm-6 col-lg-4 all {{j.Category}}">
           <div class="box">
             <div>
               <div class="img-box">
-                <img src="{% static 'images/f1.png' %}" alt="">
+                <img src="/media/{{i.Image}}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Delicious Pizza
+                  {{i.Item_name}}
                 </h5>
                 <p>
-                  Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  {{i.description}}
                 </p>
                 <div class="options">
                   <h6>
-                    $20
+                    ${{i.Price}}
                   </h6>
                   <a href="">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -331,6 +332,7 @@
             </div>
           </div>
         </div>
+        {% comment "" %}
         <div class="col-sm-6 col-lg-4 all burger">
           <div class="box">
             <div>
@@ -939,6 +941,8 @@
             </div>
           </div>
         </div>
+        {% endcomment %}
+        {% endfor %}
       </div>
     </div>
     <div class="btn-box">
@@ -1056,19 +1060,21 @@
         What Says Our Customers
       </h2>
     </div>
+    
     <div class="carousel-wrap row ">
       <div class="owl-carousel client_owl-carousel">
+        {% for r in review %}
         <div class="item">
           <div class="box">
             <div class="detail-box">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                {{r.Description}}
               </p>
               <h6>
-                Moana Michell
+                {{r.User_name}}
               </h6>
               <p>
-                magna aliqua
+                {{k.Rating}}/5
               </p>
             </div>
             <div class="img-box">
@@ -1076,26 +1082,10 @@
             </div>
           </div>
         </div>
-        <div class="item">
-          <div class="box">
-            <div class="detail-box">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-              </p>
-              <h6>
-                Mike Hamell
-              </h6>
-              <p>
-                magna aliqua
-              </p>
-            </div>
-            <div class="img-box">
-              <img src="{% static 'images/client2.jpg' %}" alt="" class="box-img">
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
+    
   </div>
 </section>
 
