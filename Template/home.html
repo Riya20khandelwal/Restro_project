@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block home_status %}active{% endblock home_status %}
+
 {% block slider %}
 <!-- slider section -->
     <section class="slider_section ">
@@ -974,10 +976,9 @@
             </h2>
           </div>
           <p>
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-            in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-            are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-            the middle of text. All
+            {% for d in data %}
+              {{d.Description}}
+              {% endfor %}
           </p>
           <a href="">
             Read More
@@ -1074,11 +1075,11 @@
                 {{r.User_name}}
               </h6>
               <p>
-                {{k.Rating}}/5
+                Rating : {{r.Ratting}}/5
               </p>
             </div>
             <div class="img-box">
-              <img src="{% static 'images/client1.jpg' %}" alt="" class="box-img">
+              <img src="media/{{r.Image}}" alt="" class="box-img">
             </div>
           </div>
         </div>
