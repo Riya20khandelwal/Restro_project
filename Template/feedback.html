@@ -15,18 +15,16 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form action="{% url 'feedback' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
               <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
+                <input type="text" class="form-control" name="u_name" placeholder="Your Name" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
-              </div>
-              <div>
-              <textarea class="form-control" name="Description" rows="7" required placeholder="Write your suggestions...">
+              <textarea class="form-control" name="describe" rows="7" required placeholder="Write your suggestions...">
               </textarea>
               <div>
-                <select class="form-control nice-select wide">
+                <select class="form-control nice-select wide" name="rating">
                   <option value="" disabled selected>
                     Please Give Us Rating?
                   </option>
@@ -48,7 +46,7 @@
                 </select>
               </div>
               <div>
-                <input class="form-control form-control-lg"type="file">
+                <input class="form-control form-control-lg" type="file" name="u_image">
               </div>
               <div class="btn_box">
                 <button>
